@@ -10,3 +10,4 @@ gem "httparty", "~> 0.17.3"
 gem "webmock", "~> 3.8"
 
 gem 'rubocop', require: false
+gem "websocket-client-simple", "~> 0.3.0"
