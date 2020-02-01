@@ -18,42 +18,42 @@ RSpec.describe PolygonClient::StocksClient do
   end
 
   it 'requests historic trades correctly' do
-    symbol = 'AAPL'
+    ticker = 'AAPL'
     date = '2018-02-02'
     query = { reverse: true, limit: 10, timestamp: 1_580_579_296 }
-    stub = api_stub("/v2/ticks/stocks/trades/#{symbol}/#{date}", query)
-    @client.historic_trades(symbol, date, query)
+    stub = api_stub("/v2/ticks/stocks/trades/#{ticker}/#{date}", query)
+    @client.historic_trades(ticker, date, query)
     expect(stub).to have_been_requested
   end
 
   it 'requests historic quotes correctly' do
-    symbol = 'AAPL'
+    ticker = 'AAPL'
     date = '2018-02-02'
     query = { reverse: true, limit: 10, timestamp: 1_580_579_296 }
-    stub = api_stub("/v2/ticks/stocks/nbbo/#{symbol}/#{date}", query)
-    @client.historic_quotes(symbol, date, query)
+    stub = api_stub("/v2/ticks/stocks/nbbo/#{ticker}/#{date}", query)
+    @client.historic_quotes(ticker, date, query)
     expect(stub).to have_been_requested
   end
 
   it 'requests last trade for symbol correctly' do
-    symbol = 'AAPL'
-    stub = api_stub("/v1/last/stocks/#{symbol}")
-    @client.last_trade_for_symbol(symbol)
+    ticker = 'AAPL'
+    stub = api_stub("/v1/last/stocks/#{ticker}")
+    @client.last_trade_for_symbol(ticker)
     expect(stub).to have_been_requested
   end
 
   it 'requests last quote for symbol correctly' do
-    symbol = 'AAPL'
-    stub = api_stub("/v1/last_quote/stocks/#{symbol}")
-    @client.last_quote_for_symbol(symbol)
+    ticker = 'AAPL'
+    stub = api_stub("/v1/last_quote/stocks/#{ticker}")
+    @client.last_quote_for_symbol(ticker)
     expect(stub).to have_been_requested
   end
 
   it 'requests daily open close correctly' do
-    symbol = 'AAPL'
+    ticker = 'AAPL'
     date = '2018-02-02'
-    stub = api_stub("/v1/open-close/#{symbol}/#{date}")
-    @client.daily_open_close(symbol, date)
+    stub = api_stub("/v1/open-close/#{ticker}/#{date}")
+    @client.daily_open_close(ticker, date)
     expect(stub).to have_been_requested
   end
 
@@ -76,9 +76,9 @@ RSpec.describe PolygonClient::StocksClient do
   end
 
   it 'requests snapshot - single ticker correctly' do
-    symbol = 'AAPL'
-    stub = api_stub("/v2/snapshot/locale/us/markets/stocks/tickers/#{symbol}")
-    @client.snapshot_single_ticker(symbol)
+    ticker = 'AAPL'
+    stub = api_stub("/v2/snapshot/locale/us/markets/stocks/tickers/#{ticker}")
+    @client.snapshot_single_ticker(ticker)
     expect(stub).to have_been_requested
   end
 
@@ -95,15 +95,15 @@ RSpec.describe PolygonClient::StocksClient do
   end
 
   it 'requests previous close correctly' do
-    symbol = 'AAPL'
+    ticker = 'AAPL'
     query = { unadjusted: false }
-    stub = api_stub("/v2/aggs/ticker/#{symbol}/prev", query)
-    @client.previous_close(symbol, query)
+    stub = api_stub("/v2/aggs/ticker/#{ticker}/prev", query)
+    @client.previous_close(ticker, query)
     expect(stub).to have_been_requested
   end
 
   it 'requests aggregates correctly' do
-    symbol = 'AAPL'
+    ticker = 'AAPL'
     multiplier = 1
     timespan = 'day'
     from = '2019-01-01'
@@ -111,12 +111,12 @@ RSpec.describe PolygonClient::StocksClient do
     query = { unadjusted: false }
 
     stub = api_stub(
-      "/v2/aggs/ticker/#{symbol}" \
+      "/v2/aggs/ticker/#{ticker}" \
       "/range/#{multiplier}/#{timespan}/#{from}/#{to}",
       query
     )
 
-    @client.aggregates(symbol, multiplier, timespan, from, to, query)
+    @client.aggregates(ticker, multiplier, timespan, from, to, query)
     expect(stub).to have_been_requested
   end
 

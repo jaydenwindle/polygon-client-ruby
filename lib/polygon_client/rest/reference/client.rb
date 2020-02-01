@@ -24,12 +24,12 @@ module PolygonClient
       get('/v2/reference/types', {}, @api_key)
     end
 
-    def ticker_details(symbol)
-      get("/v1/meta/symbols/#{symbol}/company", {}, @api_key)
+    def ticker_details(ticker)
+      get("/v1/meta/symbols/#{ticker}/company", {}, @api_key)
     end
 
-    def ticker_news(symbol, query)
-      get("/v1/meta/symbols/#{symbol}/news", query, @api_key)
+    def ticker_news(ticker, query)
+      get("/v1/meta/symbols/#{ticker}/news", query, @api_key)
     end
 
     def markets
@@ -40,16 +40,16 @@ module PolygonClient
       get('/v2/reference/locales', {}, @api_key)
     end
 
-    def stock_splits(symbol)
-      get("/v2/reference/splits/#{symbol}", {}, @api_key)
+    def stock_splits(ticker)
+      get("/v2/reference/splits/#{ticker}", {}, @api_key)
     end
 
-    def stock_dividends(symbol)
-      get("/v2/reference/dividends/#{symbol}", {}, @api_key)
+    def stock_dividends(ticker)
+      get("/v2/reference/dividends/#{ticker}", {}, @api_key)
     end
 
-    def stock_financials(symbol, query)
-      get("/v2/reference/financials/#{symbol}", query, @api_key)
+    def stock_financials(ticker, query)
+      get("/v2/reference/financials/#{ticker}", query, @api_key)
     end
 
     def market_status

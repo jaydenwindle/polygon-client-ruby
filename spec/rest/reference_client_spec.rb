@@ -28,17 +28,17 @@ RSpec.describe PolygonClient::ReferenceClient do
   end
 
   it 'requests ticker details correctly' do
-    symbol = 'AAPL'
-    stub = api_stub("/v1/meta/symbols/#{symbol}/company")
-    @client.ticker_details(symbol)
+    ticker = 'AAPL'
+    stub = api_stub("/v1/meta/symbols/#{ticker}/company")
+    @client.ticker_details(ticker)
     expect(stub).to have_been_requested
   end
 
   it 'requests ticker news correctly' do
-    symbol = 'AAPL'
+    ticker = 'AAPL'
     query = { perPage: 10, page: 2 }
-    stub = api_stub("/v1/meta/symbols/#{symbol}/news", query)
-    @client.ticker_news(symbol, query)
+    stub = api_stub("/v1/meta/symbols/#{ticker}/news", query)
+    @client.ticker_news(ticker, query)
     expect(stub).to have_been_requested
   end
 
@@ -55,24 +55,24 @@ RSpec.describe PolygonClient::ReferenceClient do
   end
 
   it 'requests stock splits correctly' do
-    symbol = 'APPL'
-    stub = api_stub("/v2/reference/splits/#{symbol}")
-    @client.stock_splits(symbol)
+    ticker = 'APPL'
+    stub = api_stub("/v2/reference/splits/#{ticker}")
+    @client.stock_splits(ticker)
     expect(stub).to have_been_requested
   end
 
   it 'requests stock dividends correctly' do
-    symbol = 'APPL'
-    stub = api_stub("/v2/reference/dividends/#{symbol}")
-    @client.stock_dividends(symbol)
+    ticker = 'APPL'
+    stub = api_stub("/v2/reference/dividends/#{ticker}")
+    @client.stock_dividends(ticker)
     expect(stub).to have_been_requested
   end
 
   it 'requests stock financials correctly' do
-    symbol = 'APPL'
+    ticker = 'APPL'
     query = { limit: 5, type: 'YA', sort: 'reportPeriod' }
-    stub = api_stub("/v2/reference/financials/#{symbol}", query)
-    @client.stock_financials(symbol, query)
+    stub = api_stub("/v2/reference/financials/#{ticker}", query)
+    @client.stock_financials(ticker, query)
     expect(stub).to have_been_requested
   end
 

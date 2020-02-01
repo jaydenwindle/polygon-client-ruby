@@ -20,24 +20,24 @@ module PolygonClient
       get('/v1/meta/exchanges', {}, @api_key)
     end
 
-    def historic_trades(symbol, date, query)
-      get("/v2/ticks/stocks/trades/#{symbol}/#{date}", query, @api_key)
+    def historic_trades(ticker, date, query)
+      get("/v2/ticks/stocks/trades/#{ticker}/#{date}", query, @api_key)
     end
 
-    def historic_quotes(symbol, date, query)
-      get("/v2/ticks/stocks/nbbo/#{symbol}/#{date}", query, @api_key)
+    def historic_quotes(ticker, date, query)
+      get("/v2/ticks/stocks/nbbo/#{ticker}/#{date}", query, @api_key)
     end
 
-    def last_trade_for_symbol(symbol)
-      get("/v1/last/stocks/#{symbol}", {}, @api_key)
+    def last_trade_for_symbol(ticker)
+      get("/v1/last/stocks/#{ticker}", {}, @api_key)
     end
 
-    def last_quote_for_symbol(symbol)
-      get("/v1/last_quote/stocks/#{symbol}", {}, @api_key)
+    def last_quote_for_symbol(ticker)
+      get("/v1/last_quote/stocks/#{ticker}", {}, @api_key)
     end
 
-    def daily_open_close(symbol, date)
-      get("/v1/open-close/#{symbol}/#{date}", {}, @api_key)
+    def daily_open_close(ticker, date)
+      get("/v1/open-close/#{ticker}/#{date}", {}, @api_key)
     end
 
     def condition_mappings(ticktype = 'trades')
@@ -48,9 +48,9 @@ module PolygonClient
       get('/v2/snapshot/locale/us/markets/stocks/tickers', {}, @api_key)
     end
 
-    def snapshot_single_ticker(symbol)
+    def snapshot_single_ticker(ticker)
       get(
-        "/v2/snapshot/locale/us/markets/stocks/tickers/#{symbol}",
+        "/v2/snapshot/locale/us/markets/stocks/tickers/#{ticker}",
         {},
         @api_key
       )
@@ -64,13 +64,13 @@ module PolygonClient
       )
     end
 
-    def previous_close(symbol, query)
-      get("/v2/aggs/ticker/#{symbol}/prev", query, @api_key)
+    def previous_close(ticker, query)
+      get("/v2/aggs/ticker/#{ticker}/prev", query, @api_key)
     end
 
-    def aggregates(symbol, multiplier, timespan, from, to, query)
+    def aggregates(ticker, multiplier, timespan, from, to, query)
       get(
-        "/v2/aggs/ticker/#{symbol}" \
+        "/v2/aggs/ticker/#{ticker}" \
         "/range/#{multiplier}/#{timespan}/#{from}/#{to}",
         query,
         @api_key
