@@ -7,7 +7,4 @@
     }
   },
   "ruby.format": "rubocop",
-  "[ruby]": {
-    "editor.formatOnSave": true
-  },
 }
