@@ -20,8 +20,8 @@ module PolygonClient
 
       @reference = ReferenceClient.new(api_key)
       @stocks = StocksClient.new(api_key)
-      @forex = ForexClient.new(api_key)
-      @crypto = CryptoClient.new(api_key)
+      @forex = ForexClient.new(api_key, @stocks)
+      @crypto = CryptoClient.new(api_key, @stocks)
     end
 
     attr_reader :reference
