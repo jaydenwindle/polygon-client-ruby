@@ -41,4 +41,3 @@ module PolygonClient
     end
   end
 end
-

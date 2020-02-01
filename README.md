@@ -1,8 +1,6 @@
 # PolygonClient
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/polygon_client`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A fully-featured API client for the polygon.io API. Includes support for REST and Websocket API calls.
 
 ## Installation
 
@@ -22,7 +20,53 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'polygon_client'
+
+API_KEY = "<your api key>"
+
+client = PolygonClient::PolygonClient.new(API_KEY)
+
+# REST API
+previous_close = client.rest.forex.previous_close()
+
+# Websocket API
+stocks_client = client.websockets.stocks
+
+stocks_client.subscribe(["T.APPL"])
+
+stocks_client.on :message do |data|
+  puts data
+end
+
+stocks_client.unsubscribe(["T.APPL"])
+```
+
+If you'd like more control over which APIs you use, you can import and initialize each API client individually
+
+```ruby
+# REST API
+require 'polygon_client/rest/crypto'
+
+API_KEY = "<your api key>"
+crypto_client = CryptoClient.new(API_KEY)
+
+previous_close = crypto_client.previous_close()
+
+# Websocket API
+require 'polygon_client/websockets/crypto'
+
+API_KEY = "<your api key>"
+crypto_client = CryptoWebsocketClient.new(API_KEY)
+
+crypto_client.subscribe(["XT.BTC-USD"])
+
+crypto_client.on :message do |data|
+  puts data
+end
+
+crypto_client.unsubscribe(["XT.BTC-USD"])
+```
 
 ## Development
 

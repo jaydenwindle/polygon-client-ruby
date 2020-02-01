@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 RSpec.describe PolygonClient::ForexClient do
   before do
     @client = PolygonClient::ForexClient.new(API_KEY)
   end
 
   it 'rest client raises error if api key is not defined' do
-    expect { PolygonClient::ForexClient.new }.to raise_error(PolygonClient::PolygonError)
+    expect { PolygonClient::ForexClient.new }.to(
+      raise_error(PolygonClient::PolygonError)
+    )
   end
 
   it 'requests previous close correctly' do
@@ -92,5 +96,4 @@ RSpec.describe PolygonClient::ForexClient do
     @client.snapshot_gainers_losers(direction)
     expect(stub).to have_been_requested
   end
-
 end

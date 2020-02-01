@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 RSpec.describe PolygonClient::CryptoClient do
   before do
     @client = PolygonClient::CryptoClient.new(API_KEY)
   end
 
-  it "rest client raises error if api key is not defined" do
-    expect{ PolygonClient::CryptoClient.new }.to raise_error(PolygonClient::PolygonError)
+  it 'rest client raises error if api key is not defined' do
+    expect { PolygonClient::CryptoClient.new }.to(
+      raise_error(PolygonClient::PolygonError)
+    )
   end
 
   it 'requests previous close correctly' do
@@ -89,7 +93,9 @@ RSpec.describe PolygonClient::CryptoClient do
 
   it 'requests snapshot - single ticker correctly' do
     ticker = 'X:BTCUSD'
-    stub = api_stub("/v2/snapshot/locale/global/markets/crypto/tickers/#{ticker}")
+    stub = api_stub(
+      "/v2/snapshot/locale/global/markets/crypto/tickers/#{ticker}"
+    )
     @client.snapshot_single_ticker(ticker)
     expect(stub).to have_been_requested
   end
@@ -114,5 +120,4 @@ RSpec.describe PolygonClient::CryptoClient do
     @client.snapshot_gainers_losers(direction)
     expect(stub).to have_been_requested
   end
-
 end

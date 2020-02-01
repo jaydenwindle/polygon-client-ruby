@@ -69,7 +69,11 @@ module PolygonClient
     end
 
     def snapshot_gainers_losers(direction = 'gainers')
-      get("/v2/snapshot/locale/global/markets/crypto/#{direction}", {}, @api_key)
+      get(
+        "/v2/snapshot/locale/global/markets/crypto/#{direction}",
+        {},
+        @api_key
+      )
     end
   end
 end
