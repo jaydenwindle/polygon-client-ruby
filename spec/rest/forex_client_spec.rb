@@ -8,16 +8,6 @@ RSpec.describe PolygonClient::ForexClient do
   end
 
   it 'requests previous close correctly' do
-    ticker = "AAPL"
-    query = {
-      unadjusted: true
-    }
-    stub = api_stub("/v2/aggs/ticker/#{ticker}/prev", query)
-    @client.previous_close(ticker, query)
-    expect(stub).to have_been_requested
-  end
-
-  it 'requests previous close correctly' do
     ticker = 'C:EURUSD'
     query = { unadjusted: false }
     stub = api_stub("/v2/aggs/ticker/#{ticker}/prev", query)
