@@ -25,7 +25,7 @@ require 'polygon_client'
 
 API_KEY = "<your api key>"
 
-client = PolygonClient::PolygonClient.new(API_KEY)
+client = PolygonClient::Client.new(API_KEY)
 
 # REST API
 previous_close = client.rest.forex.previous_close()
