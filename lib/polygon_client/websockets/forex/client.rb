@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require 'event_emitter'
+require 'websocket-client-simple'
+require 'polygon_client/websockets/transport'
+
 module PolygonClient
   # Polygon.io Forex Websocket API client.
   # @param [String] api_key your polygon.io API key

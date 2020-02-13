@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'event_emitter'
+require 'websocket-client-simple'
 require 'polygon_client/websockets/transport'
 
 module PolygonClient

@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require 'polygon_client/websockets/stocks/client'
+require 'polygon_client/websockets/forex/client'
+require 'polygon_client/websockets/crypto/client'
+
 module PolygonClient
   # Top-level Polygon.io Websocket API client.
   # @param [String] api_key your polygon.io API key
