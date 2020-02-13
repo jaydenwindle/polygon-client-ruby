@@ -18,7 +18,7 @@ module PolygonClient
       end
 
       @rest = PolygonClient::RestClient.new(api_key)
-      @websockets = PolygonClient::WebsocketClient.new(api_key)
+      # @websockets = PolygonClient::WebsocketClient.new(api_key)
     end
   end
 end
