@@ -20,5 +20,7 @@ module PolygonClient
       @rest = PolygonClient::RestClient.new(api_key)
       # @websockets = PolygonClient::WebsocketClient.new(api_key)
     end
+
+    attr_reader :rest
   end
 end
